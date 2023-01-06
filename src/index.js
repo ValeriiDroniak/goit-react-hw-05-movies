@@ -1,10 +1,20 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { App } from 'components/App';
+import { createRoot } from 'react-dom/client';
+import { ThemeProvider } from '@emotion/react';
+import { App } from 'components/App/App';
+import theme from 'utils/theme';
 import './index.css';
+import { BrowserRouter } from 'react-router-dom';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+const rootElement = document.getElementById('root');
+const root = createRoot(rootElement);
+
+root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter basename="goit-react-hw-05-movies">
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );
