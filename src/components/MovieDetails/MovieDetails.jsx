@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
-import { NavLink, Outlet, useLocation, useParams } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { useEffect, useState } from 'react';
+import { Outlet, useParams } from 'react-router-dom';
+// import { toast } from 'react-toastify';
 import { createPosterUrl, getMovieDetails } from 'services/api';
 import { Box } from 'components/Box/Box';
 import { BoxInfo, Info, TagInfo, Title } from './MovieDetails.styled';
@@ -12,12 +12,12 @@ const navItems = [
 ];
 
 export default function MovieDetails() {
-  const location = useLocation();
-  const backPath = useRef();
+  // const location = useLocation();
+  // const backPath = useRef();
 
   const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     if (!MovieDetails) {
