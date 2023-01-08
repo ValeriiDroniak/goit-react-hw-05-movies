@@ -1,17 +1,14 @@
 import styled from '@emotion/styled';
 
 export const Form = styled.form`
-  position: absolute;
-  top: 16px;
-  right: 16px;
   display: flex;
   align-items: center;
   width: 100%;
   max-width: 320px;
-  background-color: rgba(255, 255, 255, 0.5);
   border-radius: ${p => p.theme.radii.normal};
   overflow: hidden;
-  margin: 0 auto;
+  margin: ${p => p.theme.space[4]}px auto;
+  background-color: rgba(0, 0, 0, 0.7);
 `;
 
 export const Input = styled.input`
@@ -23,6 +20,7 @@ export const Input = styled.input`
   outline: none;
   padding-left: ${p => p.theme.space[1]}px;
   padding-right: ${p => p.theme.space[1]}px;
+  color: ${p => p.theme.colors.white};
   background-color: rgba(255, 255, 255, 0);
 `;
 
@@ -33,11 +31,11 @@ export const SearchButton = styled.button`
   width: 32px;
   height: 32px;
   border: ${p => p.theme.radii.none};
-  opacity: 0.6;
+  opacity: 0.7;
   transition: opacity ${p => p.theme.transitions.cub};
   cursor: pointer;
   outline: none;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: ${p => p.theme.colors.overlay};
 
   &:hover,
   &:focus {

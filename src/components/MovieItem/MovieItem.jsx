@@ -1,6 +1,6 @@
+import { Link, useLocation } from 'react-router-dom';
 import { createPosterUrl } from 'services/api';
 import { Item, Wrapper } from './MovieItem.styled';
-import { NavLink, useLocation } from 'react-router-dom';
 
 export const MovieItem = ({ movie: { name, title, poster_path, id } }) => {
   const location = useLocation();
@@ -8,15 +8,12 @@ export const MovieItem = ({ movie: { name, title, poster_path, id } }) => {
 
   return (
     <Item>
-      <NavLink
-        to={path}
-        // state={{ from: `${location.pathname + location.search}` }}
-      >
+      <Link to={path} state={{ from: location }}>
         <img src={createPosterUrl(poster_path)} alt={title ?? name} />
         <Wrapper>
           <p style={{ fontWeight: '700' }}>{title ?? name}</p>
         </Wrapper>
-      </NavLink>
+      </Link>
     </Item>
   );
 };

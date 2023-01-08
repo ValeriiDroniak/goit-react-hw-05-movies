@@ -1,24 +1,28 @@
-import { Box } from 'components/Box/Box';
+import { Box } from 'components/Box';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { createPosterUrl, getCast } from 'services/api';
-import profilImg from 'utils/default_profile.jpg';
+import profilImg from 'images/default_profile.jpg';
+import { CastItem, Image, Info } from './Cast.styled';
+
+const ERROR_MESSAGE = 'Something went wrong, please try to reload the page.';
 
 export const Cast = () => {
   const { movieId } = useParams();
   const [cast, setCast] = useState([]);
 
   useEffect(() => {
-    console.log('use movieId', movieId);
-    getCast(movieId).then(setCast);
+    getCast(movieId)
+      .then(setCast)
+      .catch(err => {
+        toast.error(ERROR_MESSAGE);
+        console.log(err);
+      });
   }, [movieId]);
 
-  // if (!cast) {
-  //   return;
-  // }
-  console.log('cast', cast);
   return (
-    <Box pb="64px">
+    <Box>
       <Box
         as="ul"
         display="grid"
@@ -26,36 +30,13 @@ export const Cast = () => {
         gridGap="16px"
       >
         {cast.map(({ cast_id, name, profile_path }) => (
-          <li
-            key={cast_id}
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              width: '100%',
-              borderRadius: '4px',
-              overflow: 'hidden',
-              textAlign: 'center',
-              boxShadow: `0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
-    0px 2px 1px rgba(0, 0, 0, 0.2)`,
-            }}
-          >
-            <img
-              style={{
-                flex: '1 1 auto',
-                objectFit: 'cover',
-              }}
+          <CastItem key={cast_id}>
+            <Image
               src={profile_path ? createPosterUrl(profile_path) : profilImg}
               alt={name}
             />
-            <p
-              style={{
-                padding: '8px',
-                fontWeight: 500,
-              }}
-            >
-              {name}
-            </p>
-          </li>
+            <Info>{name}</Info>
+          </CastItem>
         ))}
       </Box>
     </Box>

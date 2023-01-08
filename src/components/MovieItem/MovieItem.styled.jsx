@@ -4,6 +4,15 @@ export const Item = styled.li`
   position: relative;
   display: block;
   box-shadow: ${p => p.theme.shadows.work};
+  max-width: max-content;
+
+  transform: scale(1);
+  transition: transform ${p => p.theme.transitions.cub};
+
+  &:hover,
+  &:focus {
+    transform: scale(1.01);
+  }
 `;
 
 export const Wrapper = styled.div`
@@ -12,15 +21,12 @@ export const Wrapper = styled.div`
   left: 0;
   display: block;
   width: 100%;
-  padding: 16px 0;
+  padding: ${p => p.theme.space[3]}px 0;
   text-align: center;
   color: rgb(255, 0, 38);
-  background-color: rgba(0, 0, 0, 0.6);
-  opacity: 0.6;
-  cursor: pointer;
+  background-color: ${p => p.theme.colors.black};
+`;
 
-  &:hover,
-  &:focus {
-    opacity: 1;
-  }
+export const Title = styled.p`
+  font-weight: ${p => p.theme.fontWeights.bold};
 `;

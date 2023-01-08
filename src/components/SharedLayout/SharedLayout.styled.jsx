@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { Box } from 'components/Box';
 import { NavLink } from 'react-router-dom';
 
 export const LinkNav = styled(NavLink)`
@@ -16,4 +17,10 @@ export const LinkNav = styled(NavLink)`
   &:focus:not(.active) {
     color: rgb(255, 0, 38);
   }
+`;
+
+export const Container = styled(Box)`
+  max-width: 1400px;
+  padding: 0 ${p => p.theme.space[3]}px;
+  margin: 0 auto;
 `;

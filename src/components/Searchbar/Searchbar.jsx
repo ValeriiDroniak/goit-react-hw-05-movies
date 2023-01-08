@@ -1,6 +1,5 @@
 // import { Box } from 'components/Box/Box';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { GoSearch } from 'react-icons/go';
 import theme from 'utils/theme';
 import { Input, SearchButton, Form } from './Searchbar.styled';
@@ -16,20 +15,17 @@ export const Searchbar = ({ value, onSubmit }) => {
 
   const handleSubmit = evt => {
     evt.preventDefault();
-    // onSubmit(evt.currentTarget.lastChild.value.trim());
     onSubmit(query);
-    // evt.target.reset();
   };
 
   return (
-    // <Box bg="secondary" p="16px" textAlign="center">
     <Form onSubmit={handleSubmit}>
       <SearchButton type="submit">
-        <GoSearch size="80%" fill={theme.colors.primary} />
+        <GoSearch size="100%" fill={theme.colors.accent} />
       </SearchButton>
 
       <Input
-        onChange={e => setQuery(e.target.value)}
+        onChange={e => setQuery(e.target.value.trim())}
         value={query}
         type="text"
         autoComplete="off"
@@ -37,6 +33,5 @@ export const Searchbar = ({ value, onSubmit }) => {
         placeholder="Search movies"
       />
     </Form>
-    // </Box>
   );
 };
