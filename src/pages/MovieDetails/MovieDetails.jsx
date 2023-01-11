@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { BsArrowLeft } from 'react-icons/bs';
 import { toast } from 'react-toastify';
@@ -18,8 +18,13 @@ export default function MovieDetails() {
   const [movieDetails, setMovieDetails] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
+  const pathToBack = useRef();
   const location = useLocation();
   const { movieId } = useParams();
+
+  if (!pathToBack.current) {
+    pathToBack.current = location.state?.from ?? '/';
+  }
 
   useEffect(() => {
     setIsLoading(true);
@@ -43,7 +48,7 @@ export default function MovieDetails() {
     <Box as="main" pb="64px">
       <Container>
         <Box m="16px">
-          <Link to={location.state?.from ?? '/'}>
+          <Link to={pathToBack.current}>
             <BsArrowLeft size="32px" fill="rgba(203, 4, 4, 0.8)" />
           </Link>
         </Box>
