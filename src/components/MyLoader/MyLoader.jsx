@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { BarLoader } from 'react-spinners';
 
 const override = {
@@ -21,4 +22,8 @@ export const MyLoader = ({ isLoading }) => {
       speedMultiplier={0.5}
     />
   );
+};
+
+MyLoader.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
 };

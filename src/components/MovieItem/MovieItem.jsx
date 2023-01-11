@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Link, useLocation } from 'react-router-dom';
 import { createPosterUrl } from 'services/api';
 import { Item, Wrapper } from './MovieItem.styled';
@@ -17,3 +18,10 @@ export const MovieItem = ({ movie: { name, title, poster_path, id } }) => {
     </Item>
   );
 };
+
+MovieItem.propTypes = PropTypes.shape({
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string,
+  title: PropTypes.string,
+  poster_path: PropTypes.string,
+}).isRequired;

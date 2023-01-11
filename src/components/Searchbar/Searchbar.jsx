@@ -1,4 +1,4 @@
-// import { Box } from 'components/Box/Box';
+import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { GoSearch } from 'react-icons/go';
 import theme from 'utils/theme';
@@ -34,4 +34,9 @@ export const Searchbar = ({ value, onSubmit }) => {
       />
     </Form>
   );
+};
+
+Searchbar.propTypes = {
+  value: PropTypes.string,
+  onSubmit: PropTypes.func.isRequired,
 };
