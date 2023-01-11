@@ -35,7 +35,6 @@ export default function Movies() {
 
   const handleSearchParam = value => {
     setSearchParams(value !== '' ? { query: value } : {});
-    setIsLoading(true);
   };
 
   return (
